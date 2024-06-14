@@ -50,7 +50,8 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {
   button.addEventListener('click', () => {
-    const productId = button.dataset.productId;
+    //const productId = button.dataset.productId;
+    const {productId} = button.dataset;
 
     let matchingItem;
     //if we click add again we should not see same item twice the cart should update the quantity to 2
