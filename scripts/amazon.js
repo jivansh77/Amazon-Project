@@ -41,9 +41,33 @@ products.forEach((product) => {
       <img src="images/icons/checkmark.png">
       Added</div>
 
-      <button class="add-to-cart-button button-primary">
+      <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${product.id}">
       Add to Cart</button>
     </div>`;
 });
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
+
+document.querySelectorAll('.js-add-to-cart').forEach((button) => {
+  button.addEventListener('click', () => {
+    const productId = button.dataset.productId;
+
+    let matchingItem;
+    //if we click add again we should not see same item twice the cart should update the quantity to 2
+    cart.forEach((item) => {   
+      if (productId === item.productId) 
+      matchingItem = item;
+    });
+    if (matchingItem)  //truthy value since its an object
+    {
+      matchingItem.quantity++;
+    }
+    else
+    {
+      cart.push({
+        productId: productId,
+        quantity: 1
+      });
+    }
+  });
+});
