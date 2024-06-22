@@ -150,6 +150,7 @@ export function renderOrderSummary()
       quantityLabel.innerHTML = newQuantity;
 
       updateCartQuantity();
+      renderPaymentSummary();
     });
 
     //adding Enter keydown feature
