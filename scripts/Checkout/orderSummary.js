@@ -132,10 +132,8 @@ export function renderOrderSummary()
         renderPaymentSummary();
       }
 
-      const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
-      quantityLabel.innerHTML = newQuantity;
-
       renderCheckoutHeader();
+      renderOrderSummary();
       renderPaymentSummary();
     });
 

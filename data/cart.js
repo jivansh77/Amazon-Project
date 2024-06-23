@@ -45,7 +45,7 @@ export function addToCart(productId)
     });
   }
   saveToStorage();
-};
+}
 
 export function addedToCart(productId, addedMessageTimeouts)
 {
@@ -64,7 +64,7 @@ export function addedToCart(productId, addedMessageTimeouts)
   }, 2000);
 
   addedMessageTimeouts[productId] = timeoutId;
-};
+}
 
 export function removeFromCart(productId)
 {
@@ -76,7 +76,7 @@ export function removeFromCart(productId)
 
   cart = newCart;
   saveToStorage();
-};
+}
 
 export function calculateCartQuantity()
 {
@@ -85,7 +85,7 @@ export function calculateCartQuantity()
     cartQuantity+=cartItem.quantity;
   });
   return cartQuantity;
-};
+}
 
 export function updateQuantity(productId, newQuantity)
 {
@@ -97,7 +97,7 @@ export function updateQuantity(productId, newQuantity)
 
   matchingItem.quantity = newQuantity;
   saveToStorage();
-};
+}
 
 export function updateDeliveryOption(productId, deliveryOptionId)
 {
@@ -108,4 +108,4 @@ export function updateDeliveryOption(productId, deliveryOptionId)
   });
   matchingItem.deliveryOptionId = deliveryOptionId;
   saveToStorage();
-};
+}
