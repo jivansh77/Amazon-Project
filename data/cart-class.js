@@ -3,17 +3,17 @@ import {validDeliveryOption} from './deliveryOptions.js';
 class Cart   //class to generate this object later
 {
   cartItems;      //same as export let cart; from cart.js
-  localStorageKey;  //basically localStorageKey = undefined;
+  #localStorageKey;  //# makes localStorageKey private
 
   constructor(localStorageKey) //for setup code, it runs automatically
   {
-    this.localStorageKey = localStorageKey;
-    this.loadFromStorage();  //to eventually reload the cart
+    this.#localStorageKey = localStorageKey;
+    this.#loadFromStorage();  //to eventually reload the cart
   }
 
-  loadFromStorage() 
+  #loadFromStorage() 
   {  
-    this.cartItems=JSON.parse(localStorage.getItem(this.localStorageKey));
+    this.cartItems=JSON.parse(localStorage.getItem(this.#localStorageKey));
     if(!this.cartItems)
     {
       this.cartItems = 
@@ -32,7 +32,7 @@ class Cart   //class to generate this object later
 
   saveToStorage() 
   {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+    localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
   }
 
   addToCart(productId)
@@ -97,7 +97,7 @@ class Cart   //class to generate this object later
   {
     let cartQuantity=0;
     this.cartItems.forEach((cartItem) => {
-      cartQuantity+=cartItem.quantity;
+      cartQuantity += cartItem.quantity;
     });
     return cartQuantity;
   }
