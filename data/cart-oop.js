@@ -1,4 +1,3 @@
-import { addToCart } from './cart.js';
 import {validDeliveryOption} from './deliveryOptions.js';
 
 function Cart(localStorageKey) //function to create this object later
