@@ -60,9 +60,34 @@ class Clothing extends Product
   {
     //super.extraInfoHTML()
     return `<a href="${this.sizeChartLink}" target="_blank">
-    Size Chart</a>`;
+    Size Chart</a>`;  //blank opens the linked document in a new tab
   }
 }
+
+/*
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString());
+
+const object2 = {
+  a: 2,
+  b: this.a  //this is undefined
+};
+
+function logThis()
+{
+  console.log(this);
+}
+logThis(); //Returns undefined
+logThis.call('hello'); //returns hello
+
+const object3 = {
+  method: () => {
+    console.log(this);
+  }
+};
+object3.method(); //Returns undefined because of arrow functions
+*/
 
 export const products = [
   {
