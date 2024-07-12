@@ -60,7 +60,7 @@ class Clothing extends Product
   {
     //super.extraInfoHTML()
     return `<a href="${this.sizeChartLink}" target="_blank">
-    Size Chart</a>`;  //blank opens the linked document in a new tab
+    Size Chart</a>`;//blank opens the linked document in a new tab
   }
 }
 
