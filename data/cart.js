@@ -128,6 +128,16 @@ export function updateDeliveryOption(productId, deliveryOptionId)
   saveToStorage();
 }
 
+export function loadCartFetch()
+{
+  const promise=fetch('https://supersimplebackend.dev/cart').then((response) => {
+    return response;
+  }).then(() => {
+    console.log('load cart');
+  });
+  return promise;
+}
+
 export function loadCart(fun)
 {
   const xhr = new XMLHttpRequest();
