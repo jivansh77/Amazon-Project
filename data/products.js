@@ -112,7 +112,32 @@ object3.method(); //Returns undefined because of arrow functions
 
 export let products = [];
 
-export function loadProducts(fun)
+export function loadProductsFetch()
+{
+  const promise=fetch('https://supersimplebackend.dev/products').then((response) => {
+    return response.json(); //does JSON.parse for us automatically
+  }).then((productsData) => {
+    products = productsData.map((productDetails) => {
+      if(productDetails.type === 'clothing')
+      {
+        return new Clothing(productDetails);
+      }
+      else if(productDetails.type === 'appliance')
+      {
+        return new Appliance(productDetails);
+      }
+      return new Product(productDetails);
+    });
+  });
+  return promise;
+}
+/*
+loadProductsFetch().then(() => {
+  console.log('next step');
+});
+*/
+
+export function loadProducts(fun)  //uses callbacks
 {
   const xhr = new XMLHttpRequest();
 
