@@ -9,9 +9,13 @@ import {loadCartFetch} from "../data/cart.js";
 
 async function loadPage()
 {
-  await loadProductsFetch();
-  await loadCartFetch();
-
+  try {
+    //throw 'error1';
+    await loadProductsFetch();
+    await loadCartFetch();
+  } catch(error) {  //For handling errors
+    console.log('Unexpected error. Please try again later.');
+  }
   renderCheckoutHeader();
   renderOrderSummary();
   renderPaymentSummary();
