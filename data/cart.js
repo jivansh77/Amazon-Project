@@ -37,6 +37,11 @@ export function addToCart(productId)
   });
 
   const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);//template strings
+
+  if (!quantitySelector)
+  {
+    return; //Exit the function to prevent further errors
+  }
   const quantity = Number(quantitySelector.value);
 
   if (matchingItem)  //truthy value since its an object
