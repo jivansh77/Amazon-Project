@@ -128,14 +128,12 @@ export function updateDeliveryOption(productId, deliveryOptionId)
   saveToStorage();
 }
 
-export function loadCartFetch()
+export async function loadCartFetch()
 {
-  const promise=fetch('https://supersimplebackend.dev/cart').then((response) => {
-    return response;
-  }).then(() => {
-    console.log('load cart');
-  });
-  return promise;
+  const response = await fetch('https://supersimplebackend.dev/cart');
+  const text = await response.text();
+  console.log('load cart');
+  return text;
 }
 
 export function loadCart(fun)
