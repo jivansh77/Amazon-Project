@@ -2,7 +2,7 @@ import {getProduct, loadProductsFetch} from "../data/products.js";
 import {orders} from "../data/orders.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {formatCurrency} from "./Utils/money.js";
-import {addToCart} from "../data/cart.js";
+import {addToCart, calculateCartQuantity} from "../data/cart.js";
 
 async function loadPage()
 {
@@ -77,6 +77,7 @@ async function loadPage()
   document.querySelectorAll('.js-buy-again').forEach((button) => {
     button.addEventListener('click', () => {
       addToCart(button.dataset.productId);
+      updateCartDisplay();
       button.innerHTML = 'Added';
       setTimeout(() => {
         button.innerHTML = `
@@ -87,3 +88,9 @@ async function loadPage()
   });
 }
 loadPage();
+
+function updateCartDisplay() 
+{
+  const cartQuantity = calculateCartQuantity();
+  document.querySelector('.cart-quantity').innerHTML = cartQuantity;
+}  

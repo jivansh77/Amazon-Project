@@ -36,13 +36,14 @@ export function addToCart(productId)
     matchingItem = cartItem;
   });
 
-  const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);//template strings
+  const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
 
-  if (!quantitySelector)
+  const quantity=quantitySelector ? Number(quantitySelector.value) : 1;
+  if (isNaN(quantity) || quantity <= 0) 
   {
-    return; //Exit the function to prevent further errors
+    console.error(`Invalid quantity: ${quantitySelector.value}`);
+    return;
   }
-  const quantity = Number(quantitySelector.value);
 
   if (matchingItem)  //truthy value since its an object
   {
