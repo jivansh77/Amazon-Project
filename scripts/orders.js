@@ -77,7 +77,6 @@ async function loadPage()
   document.querySelectorAll('.js-buy-again').forEach((button) => {
     button.addEventListener('click', () => {
       addToCart(button.dataset.productId);
-      updateCartDisplay();
       button.innerHTML = 'Added';
       setTimeout(() => {
         button.innerHTML = `
@@ -88,9 +87,3 @@ async function loadPage()
   });
 }
 loadPage();
-
-function updateCartDisplay() 
-{
-  const cartQuantity = calculateCartQuantity();
-  document.querySelector('.cart-quantity').innerHTML = cartQuantity;
-}  
